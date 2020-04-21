@@ -23,8 +23,8 @@ each_process(Index, Alpha, Weights, PIDS, Value) ->
                     map(
                         fun(K) ->
                             if K /= Index ->
-                                    nth(K,PIDS) ! {Value},
-                                    io:fwrite("Sending ~p to ~p from ~p ~n", [Value,K, Index]);
+                                    nth(K,PIDS) ! {decided_value, Value, Index},
+                                    io:fwrite("Sending ~p to ~p from ~p ~n", [Value,K,Index]);
                                 true ->
                                     K
                             end
@@ -33,15 +33,14 @@ each_process(Index, Alpha, Weights, PIDS, Value) ->
                 true ->
                     T
             end,
+
             Sum = map(
                 fun(K) ->
-                    io:fwrite("Process ~p~n",[Index]),
                     Temp_KWValue = nth(K,Weights),
-                    if KWValue > 0 andalso K /= Index->
-                            io:fwrite("Process ~p receiving from Process ~p~n",[Index, K]),
+                    if Temp_KWValue > 0 andalso K /= Index->
                             receive
-                                {Value} ->
-                                    io:fwrite("Process ~p received Value received ~p from ~p~n",[Index, Value, K]),
+                                {decided_value, ValueTemp, K} ->
+                                    io:fwrite("Process ~p received Value ~p from ~p~n",[Index, ValueTemp, K]),
                                     if Value == 1 ->
                                             {0, nth(K,Weights)};
                                         true ->
@@ -77,17 +76,19 @@ start(Token) ->
             Pid = spawn(fun() -> 
                         receive
                             {PIDS} ->
-                                each_process(T, Alpha, Weights, PIDS, nth(T,Values))                            
+                                 each_process(T, Alpha, Weights, PIDS, nth(T,Values))
+                                %  io:fwrite("Get over ~p~n",[self()])                            
                         end
                     end),
             Pid
         end,
-        seq(1,list_to_integer(Num_Proc))),
-    PIDS = append([], Rest_PIDS),
-    io:fwrite("~p ~n",[PIDS]),
+        seq(2,list_to_integer(Num_Proc))),
+
+    PIDS = append([self()], Rest_PIDS),
     map(
         fun(T) ->
             nth(T,PIDS) ! {PIDS}
         end,
-    seq(2,list_to_integer(Num_Proc))),
-    each_process(1, Alpha, Weights, PIDS, nth(1,Values)).
+    seq(2,list_to_integer(Num_Proc))),    
+each_process(1, Alpha, Weights, PIDS, nth(1,Values)).
+% io:fwrite("Get over~p~n",[self()]).
