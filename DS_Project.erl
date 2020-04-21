@@ -66,9 +66,9 @@ start(Token) ->
     Num_Proc = nth(1,tokens(Num," ")),
     {Value,[]}=nth(2,Data),
     Values = tokens(Value," "),
-    {Weight,[]}=nth(2,Data),
+    {Weight,[]}=nth(3,Data),
     Weights = tokens(Weight," "),
-    {Faulty,[]}=nth(3,Data),
+    {Faulty,[]}=nth(4,Data),
     FaultyProc = tokens(Faulty," "),
     Alpha = 1,
 
@@ -91,22 +91,3 @@ start(Token) ->
         end,
     seq(2,list_to_integer(Num_Proc))),
     each_process(1, Alpha, Weights, PIDS, nth(1,Values)).
-
-    % map(
-    %    fun(N) ->
-    %        {Da,[]} = nth(N,Data),
-    %        Value = tokens(Da," "),
-    %        Temp = [lists:sublist(Value, X, length(Value) div Num + 1) || X <- lists:seq(1,length(Value),length(Value) div Num + 1)],
-    %        MID = self(),
-        %    map(
-        %     fun(T) -> 
-        %         Pid = spawn(fun() -> 
-        %                 io:fwrite("Hello world!~n",[])
-        %                 end),
-        %         Pid
-        %     end,
-    %         seq(1,length(Temp))),
-    %         FinalArray = receivedarray([], length(Value)),
-    %         print_array(FinalArray, FileWrite)
-    %    end,
-    % seq(1,length(Data))).
