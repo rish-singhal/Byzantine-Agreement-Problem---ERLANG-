@@ -47,6 +47,7 @@ each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault) ->
                             io:fwrite("Sending ~p to ~p from ~p ~n", [XValue,K,MyID])
                     end,
             seq(1,length(PIDS))),
+            io:fwrite("~n"),
             SPID ! {done},
             each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault);  
         
@@ -65,11 +66,11 @@ each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault) ->
             if
             % and if S1 is > 0.5, myvalue is set 1 
                 US1 > 0.5 ->
-                    io:fwrite("Process: ~p, ~p, ~p, ~p, ~p, ~p ,~p ~n",[MyID, Value, Weights, US1, 1, US0, US1]),
+                  %  io:fwrite("Process: ~p, ~p, ~p, ~p, ~p, ~p ,~p ~n",[MyID, Value, Weights, US1, 1, US0, US1]),
                     each_process(MyID,  Value, Weights, US1, 1, US0, US1, Fault);
                 true->
             % otherwise 0
-                    io:fwrite("Process: ~p, ~p, ~p, ~p, ~p, ~p ,~p ~n",[MyID, Value, Weights, US0, 0, US0, US1]),
+                   % io:fwrite("Process: ~p, ~p, ~p, ~p, ~p, ~p ,~p ~n",[MyID, Value, Weights, US0, 0, US0, US1]),
                     each_process(MyID, Value, Weights, US0, 0, US0, US1, Fault)
             end;
 
@@ -262,7 +263,7 @@ start(Token) ->
 % Faulty Process or not " according to value 1 or 0"
     {Faulty,[]}=nth(4,Data),
     FaultyProc = tokens(Faulty," "),
-    
+
     io:fwrite("NumProc: ~p~n",[Num_Proc]),
     io:fwrite("Values: ~p~n",[Values]),
     io:fwrite("Weights: ~p~n",[Weights]),
@@ -271,6 +272,7 @@ start(Token) ->
 % schema: each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault) 
     PIDS = [spawn(?MODULE, each_process, [X, list_to_integer(nth(X, Values)), Weights , 0,  0, 0, 0, list_to_integer(nth(X,FaultyProc))]) || X  <- lists:seq(1, Num_Proc)],
     io:fwrite("Process PIDS: ~p ~n",[PIDS]),
+    io:fwrite("~nFormat: MyID, Value, Weights, MyWeight, MyValue, S0, S1~n"),
     print(PIDS),
 
 % to calculate total sum of weights for faulty processes, and then alpha
