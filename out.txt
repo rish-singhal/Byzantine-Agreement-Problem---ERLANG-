@@ -1,0 +1,193 @@
+NumProc: 5
+Values: ["0","1","1","0","1"]
+Weights: ["0.3","0.3","0.2","0.1","0.1"]
+FaultyProc: ["1","0","0","0","0"]
+Process PIDS: [<0.76.0>,<0.77.0>,<0.78.0>,<0.79.0>,<0.80.0>] 
+Process: 1, 0, "0.3", 0, 0, 0 ,0 
+Process: 2, 1, "0.3", 0, 0, 0 ,0 
+Process: 3, 1, "0.2", 0, 0, 0 ,0 
+Process: 4, 0, "0.1", 0, 0, 0 ,0 
+Process: 5, 1, "0.1", 0, 0, 0 ,0 
+
+Sum of weights of FaultyProc: 0.3 
+Value of Alpha: 2
+
+Round: 1
+Done with initialization
+Process: 1, 0, "0.3", 0, 0, 0 ,0 
+Process: 2, 1, "0.3", 0, 0, 0 ,0 
+Process: 3, 1, "0.2", 0, 0, 0 ,0 
+Process: 4, 0, "0.1", 0, 0, 0 ,0 
+Process: 5, 1, "0.1", 0, 0, 0 ,0 
+
+Sending 0 to 1 from 1 
+Sending 0 to 2 from 1 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0, 0, 0 ,0.3 
+Sending 0 to 3 from 1 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0, 0, 0 ,0.3 
+Sending 0 to 4 from 1 
+Process: 4, 0, ["0.3","0.3","0.2","0.1","0.1"], 0, 0, 0 ,0.3 
+Sending 0 to 5 from 1 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0, 0, 0 ,0.3 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0, 0, 0 ,0.3 
+Sending 1 to 1 from 2 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0.3 
+Sending 1 to 2 from 2 
+Sending 1 to 3 from 2 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0.3 
+Sending 1 to 4 from 2 
+Process: 4, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0.3 
+Sending 1 to 5 from 2 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0.3 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0.3 
+Sending 1 to 1 from 3 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.3 
+Sending 1 to 2 from 3 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.3 
+Sending 1 to 3 from 3 
+Sending 1 to 4 from 3 
+Process: 4, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.3 
+Sending 1 to 5 from 3 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.3 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.3 
+Sending 0 to 1 from 4 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.4 
+Sending 0 to 2 from 4 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.4 
+Sending 0 to 3 from 4 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.4 
+Sending 0 to 4 from 4 
+Sending 0 to 5 from 4 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.4 
+Process: 4, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.4 
+Sending 1 to 1 from 5 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Sending 1 to 2 from 5 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Sending 1 to 3 from 5 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Sending 1 to 4 from 5 
+Process: 4, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Sending 1 to 5 from 5 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+
+Done with phase1
+Process: 1, 0, "0.3", 0.6, 0, 0.6 ,0.4 
+Process: 2, 1, "0.3", 0.6, 0, 0.6 ,0.4 
+Process: 3, 1, "0.2", 0.6, 0, 0.6 ,0.4 
+Process: 4, 0, "0.1", 0.6, 0, 0.6 ,0.4 
+Process: 5, 1, "0.1", 0.6, 0, 0.6 ,0.4 
+
+Queen ID: 1
+Queen Sending 0 to 1 from 1 
+Queen Sending 1 to 2 from 1 
+After Phase 2 Process: 2,  1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Queen Sending 1 to 3 from 1 
+After Phase 2 Process: 3,  1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Queen Sending 1 to 4 from 1 
+After Phase 2 Process: 4,  1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+Queen Sending 1 to 5 from 1 
+After Phase 2 Process: 5,  1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+After Phase 2 Process: 1,  0, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.4 
+
+Done with Phase 2
+Process: 1, 0, "0.3", 0.6, 0, 0.6 ,0.4 
+Process: 2, 1, "0.3", 0.6, 0, 0.6 ,0.4 
+Process: 3, 1, "0.2", 0.6, 0, 0.6 ,0.4 
+Process: 4, 1, "0.1", 0.6, 0, 0.6 ,0.4 
+Process: 5, 1, "0.1", 0.6, 0, 0.6 ,0.4 
+
+
+Round: 2
+Done with initialization
+Process: 1, 0, "0.3", 0, 0, 0 ,0 
+Process: 2, 1, "0.3", 0, 0, 0 ,0 
+Process: 3, 1, "0.2", 0, 0, 0 ,0 
+Process: 4, 1, "0.1", 0, 0, 0 ,0 
+Process: 5, 1, "0.1", 0, 0, 0 ,0 
+
+Sending 1 to 1 from 1 
+Sending 1 to 2 from 1 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0 
+Sending 0 to 3 from 1 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0, 0, 0 ,0.3 
+Sending 1 to 4 from 1 
+Process: 4, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0 
+Sending 1 to 5 from 1 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0 
+Sending 1 to 1 from 2 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0 
+Sending 1 to 2 from 2 
+Sending 1 to 3 from 2 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.3, 0, 0.3 ,0.3 
+Sending 1 to 4 from 2 
+Process: 4, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0 
+Sending 1 to 5 from 2 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0 
+Sending 1 to 1 from 3 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.8, 0, 0.8 ,0 
+Sending 1 to 2 from 3 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.8, 0, 0.8 ,0 
+Sending 1 to 3 from 3 
+Sending 1 to 4 from 3 
+Process: 4, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.8, 0, 0.8 ,0 
+Sending 1 to 5 from 3 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.8, 0, 0.8 ,0 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.5, 0, 0.5 ,0.3 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 0.9, 0, 0.9 ,0 
+Sending 1 to 1 from 4 
+Sending 1 to 2 from 4 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.9, 0, 0.9 ,0 
+Sending 1 to 3 from 4 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.6, 0, 0.6 ,0.3 
+Sending 1 to 4 from 4 
+Sending 1 to 5 from 4 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.9, 0, 0.9 ,0 
+Process: 4, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.9, 0, 0.9 ,0 
+Sending 1 to 1 from 5 
+Process: 1, 0, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+Sending 1 to 2 from 5 
+Process: 2, 1, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+Sending 1 to 3 from 5 
+Process: 3, 1, ["0.3","0.3","0.2","0.1","0.1"], 0.7, 0, 0.7 ,0.3 
+Sending 1 to 4 from 5 
+Process: 4, 1, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+Sending 1 to 5 from 5 
+Process: 5, 1, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+
+Done with phase1
+Process: 1, 0, "0.3", 1.0, 0, 1.0 ,0 
+Process: 2, 1, "0.3", 1.0, 0, 1.0 ,0 
+Process: 3, 1, "0.2", 0.7, 0, 0.7 ,0.3 
+Process: 4, 1, "0.1", 1.0, 0, 1.0 ,0 
+Process: 5, 1, "0.1", 1.0, 0, 1.0 ,0 
+
+Queen ID: 2
+Queen Sending 0 to 1 from 2 
+After Phase 2 Process: 1,  0, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+Queen Sending 0 to 2 from 2 
+Queen Sending 0 to 3 from 2 
+After Phase 2 Process: 3,  0, ["0.3","0.3","0.2","0.1","0.1"], 0.7, 0, 0.7 ,0.3 
+Queen Sending 0 to 4 from 2 
+After Phase 2 Process: 4,  0, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+Queen Sending 0 to 5 from 2 
+After Phase 2 Process: 5,  0, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+After Phase 2 Process: 2,  0, ["0.3","0.3","0.2","0.1","0.1"], 1.0, 0, 1.0 ,0 
+
+Done with Phase 2
+Process: 1, 0, "0.3", 1.0, 0, 1.0 ,0 
+Process: 2, 0, "0.3", 1.0, 0, 1.0 ,0 
+Process: 3, 0, "0.2", 0.7, 0, 0.7 ,0.3 
+Process: 4, 0, "0.1", 1.0, 0, 1.0 ,0 
+Process: 5, 0, "0.1", 1.0, 0, 1.0 ,0 
+
+=ERROR REPORT==== 22-Apr-2020::16:52:11.321940 ===
+Error in process <0.76.0> with exit value:
+{badarg,[{io,format,[<0.62.0>,"~pFinal Vote: ~p~n",0],[]},
+         {new,each_process,8,[{file,"new.erl"},{line,94}]}]}
+
+
+BREAK: (a)bort (c)ontinue (p)roc info (i)nfo (l)oaded
+       (v)ersion (k)ill (D)b-tables (d)istribution
