@@ -16,13 +16,13 @@ each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault) ->
     Weight = nth(MyID, Weights),
     receive
         {print, SPID}->
-            io:fwrite("Process: ~p, ~p, ~p, ~p, ~p, ~p ,~p ~n",[MyID,  Value, Weight, MyWeight, MyValue, S0, S1]),
+            io:fwrite("Process: ~p, ~p, ~p, ~p, ~p, ~p ,~p ~n",[MyID,  Value, list_to_float(Weight), MyWeight, MyValue, S0, S1]),
              SPID ! {done},
             each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault); 
         {phaseinit, SPID} ->
             % to initillize MyWeight, S0, S1 to 0
             SPID ! {done},                  %.  -           -  - 
-            each_process(MyID,  Value, Weights, 0, MyValue, 0, 0, Fault);
+            each_process(MyID,  Value, Weights,  MyWeight, MyValue, 0, 0, Fault);
         
         {phase1, PIDS, SPID} ->   
             map(
@@ -32,19 +32,19 @@ each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault) ->
                             % as its own Value (or Random Value if it is faulty)
                             % otherwise it sends 0
                             if 
-                                Weight < 0 ->
-                                    XValue = 0;
-                                true ->
+                                Weight > 0 ->
                                     if 
                                         Fault /= 1 ->
                                             XValue = Value;
-                                    true->  
+                                        true->  
                                             %XValue = Value
                                             XValue = rand:uniform(2) - 1
-                                    end
+                                        end,
+                                    io:fwrite("Sending ~p to ~p from ~p ~n", [XValue,K,MyID]) ;
+                                true ->
+                                     XValue = 0
                             end,  
-                            nth(K,PIDS) ! {phase1val, XValue, MyID},
-                            io:fwrite("Sending ~p to ~p from ~p ~n", [XValue,K,MyID])
+                            nth(K,PIDS) ! {phase1val, XValue, MyID}
                     end,
             seq(1,length(PIDS))),
             io:fwrite("~n"),
@@ -136,14 +136,14 @@ startphase([] , PIDS, RID, QID) ->
 
 % to initiate phases
 startphase([H|P] , PIDS, RID, QID) ->
-    % initially the values of S0, S1, and MYWeight is set to 0.
+    % initially the values of S0, S1 is set to 0.
     H ! {phaseinit, self()},
     receive 
         {done} ->
         % after current processes is done with initiallization,
         % it sends a message {done}
         % and the code proceeds with initiallizing next process
-            startphase(P, PIDS, RID, QID)   
+        startphase(P, PIDS, RID, QID)   
     end.
 
 
@@ -210,6 +210,8 @@ startRounds(NumRound , ERound, PIDS) ->
     end.
 
 % this is to calculate alpha value "which is stored in Count"
+% α is defined as the least number of processes whose total weight exceeds " total weight of faulty 
+%    processes 
 calcaplpha([C|W],Count, NSum, Sum, PIDS) ->
     NewSum = NSum + list_to_float(C),
     if 
@@ -270,6 +272,7 @@ start(Token) ->
     io:fwrite("FaultyProc: ~p~n",[FaultyProc]),
 
 % schema: each_process(MyID, Value, Weights, MyWeight, MyValue, S0, S1, Fault) 
+% N processes are spawned according to input
     PIDS = [spawn(?MODULE, each_process, [X, list_to_integer(nth(X, Values)), Weights , 0,  0, 0, 0, list_to_integer(nth(X,FaultyProc))]) || X  <- lists:seq(1, Num_Proc)],
     io:fwrite("Process PIDS: ~p ~n",[PIDS]),
     io:fwrite("~nFormat: MyID, Value, Weights, MyWeight, MyValue, S0, S1~n"),
